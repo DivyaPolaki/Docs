@@ -1,0 +1,359 @@
+Collections are growable in nature 
+Recommended to use wrt memory
+Performance wise, Arrays are the best because to add an element, collections will create a new memory and copy the old values along with the new values and the old variable and values will o into garbage collections
+Implements with underlying data structure and so readimate methods support is available can be used to search, insert and manipulate
+Can hold homogeneous and heterogeneous elements
+Can hold only objects but not primitives
+
+>Collection is the group of individual objects as a single entity
+>Collection framework is several classes n interfaces which can be used for a group of objects as single entity
+>9 key interfaces in collection framework
+>No concrete class which implements collection
+>Collection interface is root interface of collection framework
+>Collections is a utility class to define utility methods like sorting, searching for collection objects
+
+9 key interfaces in collection framework
+
+1. Collection
+2. List: child interface of collection
+	> list allows duplicates and insertion order is preserved
+	
+	collection->List->Implemt Classes: Arraylist(1.2), linkedlist(1.2), vector(1.0 version)->Stack(1.0)
+	>Vector n stack are legacy classes
+3. Set: child interface of collection
+	>No duplicate and insertion order is not preserved
+	Implement classes are hashset n linkd hashset(1.4 version)
+	
+4. Sorted set: child interface of set: No duplicates allowed and the objects to be inserted in sorting order
+5. Navigableset: child interface of sorted set. used to navigate like previous element or next element
+	>Implements class is treeset
+6. Queue: child interface of collection
+	> Queue represents group of individual objects in a single entity prior to processing
+	Eg: First in First out. Before sending mail, we add emails and the mails get delivered from the first mail to last. To which id we add first, the mail gets delivere to that first
+	Implementing classes are Priority Queue and Blocking Queue->LinkedBlocking queue and priorityblocking queue
+7. Map: not child interface of collection-	
+	> duplicate keys are not allowed but duplicate values are allowed
+8. Sorted Map: child interface of map
+	> sorting order of keys in key value pairs
+9. Navigable map: child interface of sorted map. Represents several utility methods for navigation pupose
+	> imppplementation class is treemap
+	
+Important Methods of Collection Inferface:
+
+void add(Object o)
+boolean addall(Collection c)
+boolean remove(Object o)
+Object removeAll(Collection c)-This is to remove group of objects
+Object retainAll(Colection c)-Except the collection c, it removes all other objects
+Object[] c.toArray() -To convert collection into Arraylist
+boolean isEmpty()-Check if the collection is empty
+int size()-get the size or count of the collection
+iterator Iterator()-to iterate objects one by one
+
+Collection interface does not contain any method retrive any object. There is no concreate class which implements collection class directly
+List-can differentiate duplicates by using index
+Methods of list:
+
+void add(int index, object o)--add object at specific index
+boolean addAll(int index, collection c)--add a collection from a specific index
+object get(int index)--get the object at a specific index
+object remove(int index)--remove object at specific index
+object set(int index, object o)--replace an object at an index
+int indexof(Object o)--to --to get the first occurance of an object
+int lastinexof(Object o)--ti get last index of Object
+Lstterator ListIterator()--iterate tjrough values 
+
+Classes implementiing List: al, ll, vector, stack
+
+ArrayList: 
+>Underlying datastructure is Resizable array or Growable array
+>Insertion order is apreserved
+>Duplicates are allowed
+>Heterogenous objects are allowed except for Treeset and TreeMap as the objects are in sortiing order and comparison must me done for sorting
+>Null Insertion is possible
+
+Constructors:
+
+Arraylist l=new Arraylist()--This is the emplty arraylist and the default capacity is 10
+Once the another elemnt is added, then the new capacity=(current capacity*3/2)+1=16 and so one
+
+ArrayList l=new ArrayList(int initialcapacity)--This is to create an arraylist with specified initial size
+ArrayList l=new ArrayList(Collection c)--This is to convert any collection(Treeset, vector, set, linkedlist etc) to an arraylist object
+
+Every collection implements serializale and clonable interfaces.
+Serializable(I)- This is to hold and transfer the objects through the network from one place to other place
+Clonable(I)-This is to copy the other place colection and operate actins on that collection
+ArrayList and vector implements Random Access(I) and it does not cpnotain any methods and it is marker interface. Preseny in java.util
+RandomAccess interface is to access any randon object with same speed. Hence if the action is retrival, then arraylist and vector is the best choice
+
+
+Differences b/n arraylist and vector:
+
+Al: non synchromise method, multiple threads are allowed and not threadsafe, performance is high, 1.2version and non legacy
+vector: synchronised, one thread operation and thread safe, performance is low, 1.0version and legacy
+
+Synchronised version of arraylist:
+
+publiic static list synchronisedlist(List l)
+Arraylist l1=new Arraylist();
+List l=Collections.synchronisedList(l1)
+
+piblic static Set synchronisedSet(set s)
+publuc static map synchronisedmap(map m)
+
+Linked List: 
+The underlying data structure is double linked list
+Insertion order is precerved
+Duplicates are allowed
+Heterogeneous objects are allowed
+Null inseruopn is allowed
+Linked list implements serializable and clonable interfaces but not randomaccess interface
+best choice wen inserion n deleyion of element
+worst choice wen freq retrival operation
+
+methods:
+void addfirst(object o)
+void addlast(object o)
+object remocefirst(o)
+object removelast(o)
+object getfirst(0)
+object getlast(o)
+
+constructors:
+linkedlist l1=new linkedlist()
+linkedlist l=new linkedlist(collections)
+
+vectr methods:
+
+add(Object o)--from collection(I)
+add(int index, object 0 )--from List(I)
+addElement(Object o)--from Vector
+constructors:
+
+Vector v=new Vector(); default initial capacity 10
+Once it reaches max capacity and the next elemsnt is added by creating a new vector  and the new vector capacity is 2*Current capacity
+Vector v=new Vector(int initial Capacity)
+Vector v-new Vector(int initialCapacity, int incrementalCapacity)
+Vector v=new Vector(Collector c)
+
+Stack is the child class of Vector
+LIFO
+Constructor:
+Statck s=new Stack();
+
+Methods:
+push(Object o)
+pop()-Remove first element and retrieve it
+peek()--Return top of the stack but not remve
+empty()--check if stack is empty or not
+offset search("A")--search the element in the stack
+
+If the specified object is available it returns its offset from top of the stack and if object is not availabke then it returns -1
+
+Three cursers in java: If we want to retrieve objects one by one, we need cursers
+
+Iterator
+Ennumerator
+ListIterator
+
+Ennumeration:
+Ennmeration e=v.elements();
+v is vector object
+
+Methods:
+public boolean hasmoreelements();
+public object nextElement();
+
+Iterator:
+can apply for any cllection object
+can perform both read n remove
+
+collection(I) contains Iterator()
+
+Iterator itr=c.iterator();
+c is collection object
+
+Methods in iterator:
+public boolean hasnext()
+public object next()
+public void remove()
+
+Limitations of Iterator:
+single direction cursor n only forward direction cursor
+no replacement operation is not available
+addition of object is not available
+
+ListIterator:
+Bidirectional
+read, remove, addition and replacement
+
+public listIterator listIterator()
+
+ListIterator ltr=l.ListIterator
+Tis is child of Iterator(I)
+
+Methods of ListIterator:
+hasNext()
+next()
+nextIndex()
+hasPrevious()
+previous()
+previousIndex()
+set(Object o)
+remove()
+add(Object o)
+
+Set(I): Child Interface of collection, duplicates not allowed amd insertionn order is not allowed
+No New methods are there in set interface and only methods pertaining to collection is used in Set
+
+
+HashSet:
+Underlying datastructure is HashTable
+ boolean add(duplicate object) returns False
+  All objects inserted based on Hashcode
+  Implement serializable and clonable interfaces
+  search operation-best choice
+  
+  constructors:
+  
+  HashSet hs=new HashSet()--empty hashset with initial capacity is 16 and fillratio/LoadRatio is 0.75
+  HashSet hs=new Hashset(Initial capacity)--give req initial capacity and loadfactor is 0.75
+  Hashset hs=new Hashset(int Initialcapacity, Float LoadFactor)
+  HashSet hs-new Hasset(Collection c)
+  
+  LinkedHashSet: Child Class of hashset
+  Difference is insertion order is preserved
+  Underlying ds is HashTable and LinkedList
+  Linked Hashset is used for cache based applications as the insertion order is preserved and duplicates are not allowed
+  
+  Sorted Set:-Child interface of Set>>NavigableSet(I)>>TreeSet Class
+  
+  No duplicates are allowed but the objects are sorted
+  
+  Methods:
+  Object first(): Returns first elemsnt
+  Object last(): Returns last element
+  SortedSet headSet(Object 0)-Returns Less than the specific element
+  SortedSet tailSet(Object o)-Returns greater than or equal to specific element
+  SortedSet Subset(Object o1, Object o2)-Returns the elements from o1 till o2
+  Comparator Comparator()-Returns comparator that dscribles underlying sorting technoque.
+  If we use defaut natural sorting orde, we get null
+  We can apply the above methds only on sortedset implemented class objects. That is on the TreeSet Object
+  
+  TreeSet:
+  
+  Underlying ds is Balenced Tree
+  Duplicates not allowed
+  Insertion order is not preserved
+  All in sorted Order
+  Null is alowed only once
+  Heterogenpous objects are not allowed and if we add heterogeneous objcts, we get exception as ClassCastException
+  
+  Constructors:
+  
+  TreeSet ts=new TreeSet()--Empty treeset wherenelemnts are inserted as per default natural sorting
+  TreeSet ts=New Treeset(Comparator c)--to get the customised sorting like as per salary/IDd
+  TreeSet ts=new TreeSet(Collection c)--convert any collection into treeset
+  TreeSet T=mew TreeSet(SortedSet s);
+  
+  .add(null) is accepted for empty treeset
+  if null is added for non empty treeset, then we get nullpointerException
+  
+  t.add(new StringBuffer "A")
+    t.add(new StringBuffer "B")
+	  t.add(new StringBuffer "C")
+	  
+	  In the above case, we get classcasteException because stringBuffer does not implement Comparable(I)
+	  
+	  ClassCasteException , we get this when the objects are Heterogenous and for the objects that dies not implement comparable(I)
+	  If we are depending on default natural sorting order, ovjects should be homogenous and comparable
+	  
+	  Comparator: One method that is
+	  public int compareTo(Object)
+	  obj1.compareTo(Obj2)
+	  
+	  Returns negative, if obj1 comes before obj2
+	  Returns Positive if obj1 comes after obj2
+	  Returns 0 if obj1 and obj2 are equal
+	  
+	  sysout("A".compareTo("A"))--0
+	  sysout("A".compareTo("Z"))--negative
+	  sysout("z".compareTo("B"))--positive
+	  
+	  If we are depending on defaut sorting order, JVM will call internal compareTo method and objects will be inserted as per that. Hence objects will be comparable
+	  
+	  TreeSet t=new Treeset();
+	  t.add("B")
+	  t.add("l")--"l".compareTo("B")--Here, obj1 is the object that we are going to insert amd obj2 is the one which is already inserted. This returns +ve and the resukt is [B ,L]
+	  t.add("A")---"A".compareTo("B")--[A ,B ,L]
+	  
+	  If we want customised sorting order then we have to user comparator
+	  Comparable is for default sorting order and comparator is for customised sorting order
+	  Methods:
+	  
+	  public int Compare(Obj1, Obj2)--works same as compareTo but for customised sorting
+	  Public int equals()--Implementation is optional because, it is already available in every java class through object class through inheritance
+	  
+	  Implementarion is req only for Compare method in the comparator class
+	  class mycomparator implements comparator(){
+	  
+	  public int Compare(Obj1, Obj2){
+	  Integer i=(Integer)Obj1;
+	  Integer i2=(Integer)Obj2
+	  
+	  if(I1<I2)
+	  return +1;
+	  elseif(I1>I2)
+	  return -1;
+	  else
+	  return 0
+	  
+	  }
+	  
+	  }
+	  
+	  If the objects are StringBuffer, then object needs to be converted to string in compare() method
+	  obj1.toString
+	  
+	  Need rto work more on Collections
+	  
+	  What is the difference between fail-fast and fail-safe Iterators? (answer)
+This is relatively new collection interview questions and can become trick if you hear the term fail-fast and fail-safe first time. Fail-fast Iterators throws ConcurrentModificationException when one Thread is iterating over collection object and other thread structurally modify Collection either by adding, removing or modifying objects on underlying collection. They are called fail-fast because they try to immediately throw Exception when they encounter failure. On the other hand fail-safe Iterators works on copy of collection instead of original collection
+
+Read more: https://javarevisited.blogspot.com/2011/11/collection-interview-questions-answers.html#ixzz6MgCiyi00
+
+
+ 5. What is the difference between Synchronized Collection and Concurrent Collection? (answer)
+Java 5 has added several new Concurrent Collection classes e.g. ConcurrentHashMap, CopyOnWriteArrayList, BlockingQueue etc, which has made Interview questions on Java Collection even trickier. Java Also provided a way to get Synchronized copy of collection e.g. ArrayList, HashMap by using Collections.synchronizedMap() Utility function.One Significant difference is that Concurrent Collections has better performance than synchronized Collection because they lock only a portion of Map to achieve concurrency and Synchronization. See the difference between Synchronized Collection and Concurrent Collection in Java for more details.
+
+Read more: https://javarevisited.blogspot.com/2011/11/collection-interview-questions-answers.html#ixzz6MgCmY6Jf
+
+ 10. When do you use ConcurrentHashMap in Java? (answer)
+This is another advanced level collection interview questions in Java which normally asked to check whether the interviewer is familiar with optimization done on ConcurrentHashMap or not. ConcurrentHashMap is better suited for situation where you have multiple readers and one
+Writer or fewer writers since Map gets locked only during the write operation. If you have an equal number of reader and writer than ConcurrentHashMap will perform in the line of Hashtable or synchronized HashMap.
+
+Read more: https://javarevisited.blogspot.com/2011/11/collection-interview-questions-answers.html#ixzz6MgD21b7l
+
+ 18) What is CopyOnWriteArrayList, how it is different than ArrayList and Vector? (answer)
+Answer: CopyOnWriteArrayList is new List implementation introduced in Java 1.5 which provides better concurrent access than Synchronized List. better concurrency is achieved by Copying ArrayList over each write and replace with original instead of locking. Also CopyOnWriteArrayList doesn't throw any ConcurrentModification Exception. Its different than ArrayList because its thread-safe and ArrayList is not thread-safe and it's different than Vector in terms of Concurrency. CopyOnWriteArrayList provides better Concurrency by reducing contention among readers and writers. Here is a nice table which compares performance of three of popular List implementation ArrayList, LinkedList and CopyOnWriteArrayList in Java:
+Java questions from Collection framework
+
+Read more: https://javarevisited.blogspot.com/2011/11/collection-interview-questions-answers.html#ixzz6MgDJmWEP
+
+ 20) When does ConcurrentModificationException occur on iteration? (answer)
+When you remove object using Collection's or List's remove method e.g. remove(Object element) or remove(int index), instead of Iterator's remove() method than ConcurrentModificationException occurs. As per Iterator's contract, if it detect any structural change in Collection e.g. adding or removing of the element, once Iterator begins, it can throw ConcurrentModificationException.  Here are some tips to avoid ConcurrentModification in Java. 
+
+Read more: https://javarevisited.blogspot.com/2011/11/collection-interview-questions-answers.html#ixzz6MgDO7lnn
+
+
+
+
+22) What is BlockingQueue, how it is different than other collection classes? (answer)
+BlockingQueue is a Queue implementation available in java.util.concurrent package. It's one of the concurrent Collection class added on Java 1.5, main difference between BlockingQueue and other collection classes is that apart from storage, it also provides flow control. It can be used in inter-thread communication and also provides built-in thread-safety by using happens-before guarantee. You can use BlockingQueue to solve Producer Consumer problem, which is what is needed in most of concurrent applications.
+
+Read more: https://javarevisited.blogspot.com/2011/11/collection-interview-questions-answers.html#ixzz6MgDQnUZt
+
+  
+
+
+
